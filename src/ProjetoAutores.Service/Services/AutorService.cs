@@ -6,6 +6,7 @@ using ProjetoAutores.Domain.Entities;
 using ProjetoAutores.Domain.Interfaces;
 using ProjetoAutores.Domain.Interfaces.Services.Autor;
 using ProjetoAutores.Domain.ViewModel;
+using ProjetoAutores.Domain.Helpers;
 
 namespace ProjetoAutores.Service.Services
 {
@@ -68,7 +69,7 @@ namespace ProjetoAutores.Service.Services
             return autoresDTO;
         }
 
-        public string FormatarNome(string nome)
+        private string FormatarNome(string nome)
         {
             string nomeFormatado = String.Empty;
             string[] nomeArray = nome.ToLower().Split(' ');
@@ -80,26 +81,25 @@ namespace ProjetoAutores.Service.Services
 
             return nomeFormatado;
         }
-        public string FormatarNomeSemSobrenome(string nome)
+        private string FormatarNomeSemSobrenome(string nome)
         {
             return nome.ToUpper();
         }
-        public string FormatarNomeComSobrenome(string[] nomeArray)
+        private string FormatarNomeComSobrenome(string[] nomeArray)
         {
-            List<string> listaDeAgnomes = new List<string>() { "FILHO", "FILHA", "NETO", "NETA", "SOBRINHO", "SOBRINHA", "JUNIOR" };
-            List<string> listaDePreposicoes = new List<string>() { "da", "de", "do", "das", "dos" };
 
-            if (listaDeAgnomes.Any(l => l.Equals(nomeArray[nomeArray.Length - 1].ToUpper())))
+            if (this.validarNomeComAgnome(nomeArray))
                 return this.FormatarNomeComAgnome(nomeArray);
             else
                 return this.FormatarNomeSemAgnome(nomeArray);
+
         }
-        public string FormatarNomeComAgnome(string[] nomeArray)
+        private string FormatarNomeComAgnome(string[] nomeArray)
         {
 
             return null;
         }
-        public string FormatarNomeSemAgnome(string[] nomeArray)
+        private string FormatarNomeSemAgnome(string[] nomeArray)
         {
             string sobrenome = nomeArray[nomeArray.Length - 1].ToUpper();
             string nomeFormatado = sobrenome + ",";
@@ -107,10 +107,39 @@ namespace ProjetoAutores.Service.Services
             for (var i = 0; i < nomeArray.Length; i++)
             {
                 if ((nomeArray.Length - 1) != i)
-                    nomeFormatado += " " + nomeArray[i];
+                {
+                    if (this.validarNomeComPreposicao(nomeArray[i]))
+                    {
+                        nomeFormatado += " " + nomeArray[i];
+                    }
+                    else
+                    {
+                        nomeFormatado += " " + FormatarTexto.Capitalize(nomeArray[i]);
+                    }
+                }
             }
 
             return nomeFormatado;
+        }
+
+        private bool validarNomeComPreposicao(string nome)
+        {
+            List<string> listaDePreposicoes = new List<string>() { "da", "de", "do", "das", "dos" };
+
+            if (listaDePreposicoes.Any(l => l.Equals(nome)))
+                return true;
+
+            return false;
+        }
+
+        private bool validarNomeComAgnome(string[] nomeArray)
+        {
+            List<string> listaDeAgnomes = new List<string>() { "FILHO", "FILHA", "NETO", "NETA", "SOBRINHO", "SOBRINHA", "JUNIOR" };
+
+            if (listaDeAgnomes.Any(l => l.Equals(nomeArray[nomeArray.Length - 1].ToUpper())))
+                return true;
+
+            return false;
         }
     }
 }
