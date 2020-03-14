@@ -38,14 +38,28 @@ namespace ProjetoAutores.Data.Repository
             return item;
         }
 
-        public Task<T> SelectAsync(int id)
+        public async Task<T> SelectAsync(int id)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                return await _dataset.SingleOrDefaultAsync(a => a.Id.Equals(id));
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
-        public Task<IEnumerable<T>> SelectAsync()
+        public async Task<IEnumerable<T>> SelectAsync()
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                return await _dataset.ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public Task<T> UpdateAsync(T item)
