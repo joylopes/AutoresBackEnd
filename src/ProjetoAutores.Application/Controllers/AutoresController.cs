@@ -17,11 +17,11 @@ namespace ProjetoAutores.Application.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetAll()
+        public async Task<ActionResult> ListarAutoresComNomeFormatado()
         {
             try
             {
-                return Ok(await _service.GetAll());
+                return Ok(await _service.ListarAutoresComNomeFormatado());
             }
             catch (ArgumentException ex)
             {

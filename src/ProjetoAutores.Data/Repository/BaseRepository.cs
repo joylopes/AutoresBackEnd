@@ -54,7 +54,7 @@ namespace ProjetoAutores.Data.Repository
         {
             try
             {
-                return await _dataset.ToListAsync();
+                return await _dataset.AsNoTracking().ToListAsync();
             }
             catch (Exception ex)
             {
