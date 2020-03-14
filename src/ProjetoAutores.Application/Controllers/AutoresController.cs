@@ -6,7 +6,7 @@ using ProjetoAutores.Domain.Interfaces.Services.Autor;
 
 namespace ProjetoAutores.Application.Controllers
 {
-    [Route("ap/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class AutoresController : ControllerBase
     {

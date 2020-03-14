@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ProjetoAutores.Service\Service.csproj" />
+    <ProjectReference Include="..\ProjetoAutores.CrossCutting\CrossCutting.csproj" />
   </ItemGroup>
 
 </Project>

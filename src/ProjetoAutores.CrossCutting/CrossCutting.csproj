@@ -1,5 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <ItemGroup>
+    <ProjectReference Include="..\ProjetoAutores.Domain\Domain.csproj" />
+    <ProjectReference Include="..\ProjetoAutores.Service\Service.csproj" />
+    <ProjectReference Include="..\ProjetoAutores.Data\Data.csproj" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>

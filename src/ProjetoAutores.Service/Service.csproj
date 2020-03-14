@@ -3,7 +3,6 @@
   <ItemGroup>
     <ProjectReference Include="..\ProjetoAutores.Domain\Domain.csproj" />
     <ProjectReference Include="..\ProjetoAutores.Data\Data.csproj" />
-    <ProjectReference Include="..\ProjetoAutores.CrossCutting\CrossCutting.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
