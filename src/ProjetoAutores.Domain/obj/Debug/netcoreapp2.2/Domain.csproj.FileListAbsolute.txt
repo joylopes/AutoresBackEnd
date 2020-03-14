@@ -1,0 +1,9 @@
+C:\desenvolvimento\Joice\AutoresBackEnd\src\ProjetoAutores.Domain\bin\Debug\netcoreapp2.2\Domain.deps.json
+C:\desenvolvimento\Joice\AutoresBackEnd\src\ProjetoAutores.Domain\bin\Debug\netcoreapp2.2\Domain.dll
+C:\desenvolvimento\Joice\AutoresBackEnd\src\ProjetoAutores.Domain\bin\Debug\netcoreapp2.2\Domain.pdb
+C:\desenvolvimento\Joice\AutoresBackEnd\src\ProjetoAutores.Domain\obj\Debug\netcoreapp2.2\Domain.csprojAssemblyReference.cache
+C:\desenvolvimento\Joice\AutoresBackEnd\src\ProjetoAutores.Domain\obj\Debug\netcoreapp2.2\Domain.csproj.CoreCompileInputs.cache
+C:\desenvolvimento\Joice\AutoresBackEnd\src\ProjetoAutores.Domain\obj\Debug\netcoreapp2.2\Domain.AssemblyInfoInputs.cache
+C:\desenvolvimento\Joice\AutoresBackEnd\src\ProjetoAutores.Domain\obj\Debug\netcoreapp2.2\Domain.AssemblyInfo.cs
+C:\desenvolvimento\Joice\AutoresBackEnd\src\ProjetoAutores.Domain\obj\Debug\netcoreapp2.2\Domain.dll
+C:\desenvolvimento\Joice\AutoresBackEnd\src\ProjetoAutores.Domain\obj\Debug\netcoreapp2.2\Domain.pdb
