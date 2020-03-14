@@ -1,5 +1,6 @@
 using ProjetoAutores.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using ProjetoAutores.Data.Mapping;
 
 namespace ProjetoAutores.Data.Context
 {
@@ -9,6 +10,10 @@ namespace ProjetoAutores.Data.Context
 
         public MyContext(DbContextOptions<MyContext> options) : base(options) { }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder) { }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<AutorEntity>(new AutorMap().Configure);
+        }
     }
 }
