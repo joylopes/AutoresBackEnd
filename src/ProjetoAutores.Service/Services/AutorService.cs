@@ -37,6 +37,15 @@ namespace ProjetoAutores.Service.Services
             return await _repository.InsertAsync(autor);
         }
 
+        public async Task<AutorDTO> Adicionar(AutorDTO autorDTO)
+        {
+            AutorEntity autor = new AutorEntity(autorDTO.Nome);
+            await _repository.InsertAsync(autor);
+            autorDTO.Id = autor.Id;
+
+            return autorDTO;
+        }
+
         public Task<AutorEntity> Put(AutorEntity autor)
         {
             throw new System.NotImplementedException();
