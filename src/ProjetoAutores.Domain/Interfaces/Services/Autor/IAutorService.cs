@@ -6,7 +6,7 @@ namespace ProjetoAutores.Domain.Interfaces.Services.Autor
 {
     public interface IAutorService
     {
-        Task<AutorEntity> Get();
+        Task<AutorEntity> Get(int id);
         Task<IEnumerable<AutorEntity>> GetAll();
         Task<AutorEntity> Post(AutorEntity autor);
         Task<AutorEntity> Put(AutorEntity autor);
