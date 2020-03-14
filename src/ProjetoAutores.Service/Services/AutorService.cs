@@ -75,7 +75,7 @@ namespace ProjetoAutores.Service.Services
             string[] nomeArray = nome.ToLower().Split(' ');
 
             if (nomeArray.Length > 1)
-                this.FormatarNomeComSobrenome(nomeArray);
+                nomeFormatado = this.FormatarNomeComSobrenome(nomeArray);
             else if (nomeArray.Length == 1)
                 nomeFormatado = this.FormatarNomeSemSobrenome(nome);
 
@@ -96,8 +96,31 @@ namespace ProjetoAutores.Service.Services
         }
         private string FormatarNomeComAgnome(string[] nomeArray)
         {
+            string nomeFormatado = String.Empty;
 
-            return null;
+            if (nomeArray.Length >= 3)
+            {
+                string sobrenome = nomeArray[nomeArray.Length - 2].ToUpper();
+                sobrenome += " " + nomeArray[nomeArray.Length - 1].ToUpper();
+                nomeFormatado = sobrenome + ",";
+
+                for (var i = 0; i < nomeArray.Length; i++)
+                {
+                    if ((nomeArray.Length - 1) != i && (nomeArray.Length - 2) != i)
+                    {
+                        if (this.validarNomeComPreposicao(nomeArray[i]))
+                        {
+                            nomeFormatado += " " + nomeArray[i];
+                        }
+                        else
+                        {
+                            nomeFormatado += " " + FormatarTexto.Capitalize(nomeArray[i]);
+                        }
+                    }
+                }
+            }
+
+            return nomeFormatado;
         }
         private string FormatarNomeSemAgnome(string[] nomeArray)
         {
