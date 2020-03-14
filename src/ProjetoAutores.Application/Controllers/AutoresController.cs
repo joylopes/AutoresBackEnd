@@ -3,7 +3,7 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ProjetoAutores.Domain.Interfaces.Services.Autor;
-using ProjetoAutores.Domain.DTO;
+using ProjetoAutores.Domain.ViewModel;
 
 namespace ProjetoAutores.Application.Controllers
 {
@@ -17,7 +17,7 @@ namespace ProjetoAutores.Application.Controllers
             _service = service;
         }
 
-        [HttpGet]
+        [HttpGet("ListarAutoresComNomeFormatado")]
         public async Task<ActionResult> ListarAutoresComNomeFormatado()
         {
             try
@@ -30,8 +30,8 @@ namespace ProjetoAutores.Application.Controllers
             }
         }
 
-        [HttpPost]
-        public async Task<ActionResult> Adicionar([FromBody] AutorDTO autor)
+        [HttpPost("Adicionar")]
+        public async Task<ActionResult> Adicionar([FromBody] AutorViewModel autor)
         {
             try
             {

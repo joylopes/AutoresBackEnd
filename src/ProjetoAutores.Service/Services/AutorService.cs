@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using ProjetoAutores.Domain.Entities;
 using ProjetoAutores.Domain.Interfaces;
 using ProjetoAutores.Domain.Interfaces.Services.Autor;
-using ProjetoAutores.Domain.DTO;
+using ProjetoAutores.Domain.ViewModel;
 
 namespace ProjetoAutores.Service.Services
 {
@@ -37,7 +37,7 @@ namespace ProjetoAutores.Service.Services
             return await _repository.InsertAsync(autor);
         }
 
-        public async Task<AutorDTO> Adicionar(AutorDTO autorDTO)
+        public async Task<AutorViewModel> Adicionar(AutorViewModel autorDTO)
         {
             AutorEntity autor = new AutorEntity(autorDTO.Nome);
             await _repository.InsertAsync(autor);
@@ -50,14 +50,14 @@ namespace ProjetoAutores.Service.Services
         {
             throw new System.NotImplementedException();
         }
-        public async Task<IEnumerable<AutorDTO>> ListarAutoresComNomeFormatado()
+        public async Task<IEnumerable<AutorViewModel>> ListarAutoresComNomeFormatado()
         {
-            List<AutorDTO> autoresDTO = new List<AutorDTO>();
+            List<AutorViewModel> autoresDTO = new List<AutorViewModel>();
             var autores = await _repository.SelectAsync();
 
             foreach (var item in autores)
             {
-                autoresDTO.Add(new AutorDTO
+                autoresDTO.Add(new AutorViewModel
                 {
                     Id = item.Id,
                     Nome = this.FormatarNome(item.Nome),
