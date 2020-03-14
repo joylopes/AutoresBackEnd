@@ -1,0 +1,14 @@
+C:\desenvolvimento\Joice\AutoresBackEnd\src\ProjetoAutores.Application\bin\Debug\netcoreapp2.2\Application.deps.json
+C:\desenvolvimento\Joice\AutoresBackEnd\src\ProjetoAutores.Application\bin\Debug\netcoreapp2.2\Application.runtimeconfig.json
+C:\desenvolvimento\Joice\AutoresBackEnd\src\ProjetoAutores.Application\bin\Debug\netcoreapp2.2\Application.runtimeconfig.dev.json
+C:\desenvolvimento\Joice\AutoresBackEnd\src\ProjetoAutores.Application\bin\Debug\netcoreapp2.2\Application.dll
+C:\desenvolvimento\Joice\AutoresBackEnd\src\ProjetoAutores.Application\bin\Debug\netcoreapp2.2\Application.pdb
+C:\desenvolvimento\Joice\AutoresBackEnd\src\ProjetoAutores.Application\obj\Debug\netcoreapp2.2\Application.csprojAssemblyReference.cache
+C:\desenvolvimento\Joice\AutoresBackEnd\src\ProjetoAutores.Application\obj\Debug\netcoreapp2.2\Application.csproj.CoreCompileInputs.cache
+C:\desenvolvimento\Joice\AutoresBackEnd\src\ProjetoAutores.Application\obj\Debug\netcoreapp2.2\Application.RazorAssemblyInfo.cache
+C:\desenvolvimento\Joice\AutoresBackEnd\src\ProjetoAutores.Application\obj\Debug\netcoreapp2.2\Application.RazorAssemblyInfo.cs
+C:\desenvolvimento\Joice\AutoresBackEnd\src\ProjetoAutores.Application\obj\Debug\netcoreapp2.2\Application.AssemblyInfoInputs.cache
+C:\desenvolvimento\Joice\AutoresBackEnd\src\ProjetoAutores.Application\obj\Debug\netcoreapp2.2\Application.AssemblyInfo.cs
+C:\desenvolvimento\Joice\AutoresBackEnd\src\ProjetoAutores.Application\obj\Debug\netcoreapp2.2\Application.RazorTargetAssemblyInfo.cache
+C:\desenvolvimento\Joice\AutoresBackEnd\src\ProjetoAutores.Application\obj\Debug\netcoreapp2.2\Application.dll
+C:\desenvolvimento\Joice\AutoresBackEnd\src\ProjetoAutores.Application\obj\Debug\netcoreapp2.2\Application.pdb
