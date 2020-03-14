@@ -9,9 +9,9 @@ namespace ProjetoAutores.Domain.Entities
         {
             get
             {
-                return null;
+                return _Nome;
             }
-            set { _Nome = (!string.IsNullOrEmpty(Nome)) ? Nome : throw new Exception("Nome vazio!"); }
+            set { _Nome = (!string.IsNullOrEmpty(Nome)) ? Nome : throw new Exception("Nome não pode ser vazio!"); }
         }
     }
 }
