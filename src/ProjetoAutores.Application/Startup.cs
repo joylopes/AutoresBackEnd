@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using ProjetoAutores.CrossCutting.DependencyInjection;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace Application
 {
@@ -27,6 +29,22 @@ namespace Application
         {
             ConfigureService.ConfigureDependenciesService(services);
             ConfigureRepository.ConfigureDependenciesRepository(services);
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1",
+                new Info
+                {
+                    Title = "API DotNet Core 2.2",
+                    Version = "v1",
+                    Description = "Modelo de API DDD com DotNetCore 3.0",
+                    Contact = new Contact
+                    {
+                        Name = "Joice M Cardoso Lopes"
+                    }
+                });
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -37,6 +55,17 @@ namespace Application
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.RoutePrefix = String.Empty;
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Projeto em Net core 2.2");
+            });
+
+            var option = new RewriteOptions();
+            option.AddRedirect("^$", "swagger");
+            app.UseRewriter(option);
 
             app.UseMvc();
         }
