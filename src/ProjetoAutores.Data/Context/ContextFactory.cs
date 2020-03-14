@@ -8,7 +8,7 @@ namespace ProjetoAutores.Data.Context
         public MyContext CreateDbContext(string[] args)
         {
             //Usado p/ criar as migrações
-            var connectionString = "Server=localhost;Port=3306;Database=DbProjetoAutores;Uid=sa;Pwd=acsj1996";
+            var connectionString = "Server=localhost;Database=DbProjetoAutores;Uid=sa;Pwd=acsj1996";
             var optionsBuilder = new DbContextOptionsBuilder<MyContext>();
             optionsBuilder.UseSqlServer(connectionString);
             return new MyContext(optionsBuilder.Options);
