@@ -43,13 +43,13 @@ namespace ProjetoAutores.Service.Services
             return await _repository.InsertAsync(autor);
         }
 
-        public async Task<AutorViewModel> Adicionar(AutorViewModel autorDTO)
+        public AutorViewModel Adicionar(AutorViewModel autorModel)
         {
-            AutorEntity autor = new AutorEntity(autorDTO.Nome);
-            await _repository.InsertAsync(autor);
-            autorDTO.Id = autor.Id;
+            AutorEntity autor = new AutorEntity(autorModel.Nome);
+            _repository.InsertAsync(autor);
+            autorModel.Id = autor.Id;
 
-            return autorDTO;
+            return autorModel;
         }
 
         public Task<AutorEntity> Put(AutorEntity autor)
@@ -149,7 +149,6 @@ namespace ProjetoAutores.Service.Services
 
             return nomeFormatado;
         }
-
         public bool validarNomeComPreposicao(string nome)
         {
             List<string> listaDePreposicoes = new List<string>() { "da", "de", "do", "das", "dos" };

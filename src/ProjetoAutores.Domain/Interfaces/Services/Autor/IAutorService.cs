@@ -11,7 +11,7 @@ namespace ProjetoAutores.Domain.Interfaces.Services.Autor
         Task<IEnumerable<AutorEntity>> GetAll();
         Task<IEnumerable<AutorViewModel>> ListarAutoresComNomeFormatado();
         Task<AutorEntity> Post(AutorEntity autor);
-        Task<AutorViewModel> Adicionar(AutorViewModel autor);
+        AutorViewModel Adicionar(AutorViewModel autor);
         Task<AutorEntity> Put(AutorEntity autor);
         Task<bool> Delete(int id);
     }

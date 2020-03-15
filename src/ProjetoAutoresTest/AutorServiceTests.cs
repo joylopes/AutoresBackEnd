@@ -1,13 +1,85 @@
-﻿using ProjetoAutores.Service.Services;
+﻿using ProjetoAutores.Domain.ViewModel;
+using ProjetoAutores.Service.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace ServiceTeste
 {
     public class AutorServiceTests
     {
+        [Fact]
+        public void ValidarNomeComPreposicao_NomeContemAgnome_ReTornaTrue()
+        {
+            //Arrange
+            var autorService = new AutorService();
+
+            //Act
+            var resultado = autorService.validarNomeComPreposicao("da");
+
+            //Assert
+            Assert.True(resultado);
+        }
+
+        [Theory]
+        [InlineData("das")]
+        [InlineData("do")]
+        [InlineData("dos")]
+        [InlineData("de")]
+        public void ValidarNomeComPreposicao_NomeContemAgnome_True(string nome)
+        {
+            //Arrange
+            var autorService = new AutorService();
+
+            //Act
+            var resultado = autorService.validarNomeComPreposicao(nome);
+
+            //Assert
+            Assert.True(resultado);
+        }
+
+
+        [Fact]
+        public void ValidarNomeComPreposicao_NomeContemAgnome_ReTornaFalse()
+        {
+            //Arrange
+            var autorService = new AutorService();
+
+            //Act
+            var resultado = autorService.validarNomeComPreposicao("na");
+
+            //Assert
+            Assert.False(resultado);
+        }
+
+        [Fact]
+        public void ValidarNomeComAgnome_NomeContemAgnome_ReTornaTrue()
+        {
+            //Arrange
+            var autorService = new AutorService();
+
+            //Act
+            var resultado = autorService.validarNomeComAgnome(new string[] { "FILHO", "filha", "NETO", "neta", "SOBRINHO", "SOBRINHA", "JUNIOR" });
+
+            //Assert
+            Assert.True(resultado);
+        }
+
+        [Fact]
+        public void ValidarNomeComAgnome_NomeContemAgnome_ReTornaFalse()
+        {
+            //Arrange
+            var autorService = new AutorService();
+
+            //Act
+            var resultado = autorService.validarNomeComAgnome(new string[] { "antonio", "carlos", "silva" });
+
+            //Assert
+            Assert.False(resultado);
+        }
+
         [Fact]
         public void Autor_FormatarNomeSemSobrenome_ReTornaNomeFormatado()
         {
@@ -18,7 +90,7 @@ namespace ServiceTeste
             var resultado = autorService.FormatarNomeSemSobrenome("silva");
 
             //Assert
-            Assert.Equal(expected:"SILVA", actual: resultado);
+            Assert.Equal(expected: "SILVA", actual: resultado);
         }
 
         [Theory]
@@ -62,6 +134,44 @@ namespace ServiceTeste
 
             //Assert
             Assert.Equal(expected: resultadoEsperado, actual: resultado);
+        }
+
+        [Fact]
+        public void Autor_Adicionar_ReTornaAutorModelComId()
+        {
+            //Arrange
+            var autorService = new AutorService();
+
+            //Act
+            var resultado = autorService.Adicionar(new AutorViewModel
+            {
+                Id = 0,
+                Nome = "string",
+                DataDeCadastro = DateTime.UtcNow
+            });
+
+            //Assert
+            Assert.NotEqual(expected: 0, actual: resultado.Id);
+        }
+
+        [Fact]
+        public void Autor_Adicionar_ReTornaErroNomeVazio()
+        {
+            //Arrange & Act & Assert
+            var autorService = new AutorService();
+            var exception = Assert.Throws<Exception>(testCode: () =>
+              {
+                  autorService.Adicionar(
+                  new AutorViewModel
+                  {
+                      Id = 0,
+                      Nome = String.Empty,
+                      DataDeCadastro = DateTime.UtcNow
+                  });
+
+              });
+
+            Assert.Equal(expected: "Nome não pode ser vazio!", actual: exception.Message);
         }
 
     }
