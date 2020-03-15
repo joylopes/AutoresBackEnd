@@ -7,6 +7,7 @@ namespace ProjetoAutores.Domain.Interfaces
     public interface IRepository<T> where T : BaseEntity
     {
         Task<T> InsertAsync(T item);
+        T Insert(T item);
         Task<T> UpdateAsync(T item);
         Task<T> SelectAsync(int id);
         Task<IEnumerable<T>> SelectAsync();

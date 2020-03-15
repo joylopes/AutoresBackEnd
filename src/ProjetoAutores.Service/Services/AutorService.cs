@@ -46,7 +46,7 @@ namespace ProjetoAutores.Service.Services
         public AutorViewModel Adicionar(AutorViewModel autorModel)
         {
             AutorEntity autor = new AutorEntity(autorModel.Nome);
-            _repository.InsertAsync(autor);
+            _repository.Insert(autor);
             autorModel.Id = autor.Id;
 
             return autorModel;

@@ -31,11 +31,11 @@ namespace ProjetoAutores.Application.Controllers
         }
 
         [HttpPost("Adicionar")]
-        public async Task<ActionResult> Adicionar([FromBody] AutorViewModel autor)
+        public ActionResult Adicionar([FromBody] AutorViewModel autor)
         {
             try
             {
-                return Ok(await _service.Adicionar(autor));
+                return Ok(_service.Adicionar(autor));
             }
             catch (ArgumentException ex)
             {

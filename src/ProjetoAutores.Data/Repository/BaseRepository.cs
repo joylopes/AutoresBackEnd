@@ -38,6 +38,21 @@ namespace ProjetoAutores.Data.Repository
             return item;
         }
 
+        public T Insert(T item)
+        {
+            try
+            {
+                _context.Add(item);
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return item;
+        }
+
         public async Task<T> SelectAsync(int id)
         {
             try
