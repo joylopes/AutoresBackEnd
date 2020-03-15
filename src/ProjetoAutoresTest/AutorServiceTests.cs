@@ -36,5 +36,33 @@ namespace ServiceTeste
             Assert.Equal(expected: resultadoEsperado, actual: resultado);
         }
 
+        [Fact]
+        public void Autor_FormatarNomeComSobrenome_ReTornaNomeFormatado()
+        {
+            //Arrange
+            var autorService = new AutorService();
+
+            //Act
+            var resultado = autorService.FormatarNomeComSobrenome(new string[] { "joice", "lopes", "da", "silva" });
+
+            //Assert
+            Assert.Equal(expected: "SILVA, Joice Lopes da", actual: resultado);
+        }
+
+        [Theory]
+        [InlineData(new string[] { "carlos", "gustavo", "pereira" }, "PEREIRA, Carlos Gustavo")]
+        [InlineData(new string[] { "antonio", "carlos", "da", "silva" }, "SILVA, Antonio Carlos da")]
+        public void Autor_FormatarNomeComSobrenome_ReTornaNomeFormatadoCorreto(string[] nome, string resultadoEsperado)
+        {
+            //Arrange
+            var autorService = new AutorService();
+
+            //Act
+            var resultado = autorService.FormatarNomeComSobrenome(nome);
+
+            //Assert
+            Assert.Equal(expected: resultadoEsperado, actual: resultado);
+        }
+
     }
 }
