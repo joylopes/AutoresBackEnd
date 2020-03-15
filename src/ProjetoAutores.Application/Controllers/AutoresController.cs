@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ProjetoAutores.Domain.Interfaces.Services.Autor;
 using ProjetoAutores.Domain.ViewModel;
+using System.Collections.Generic;
 
 namespace ProjetoAutores.Application.Controllers
 {
@@ -31,7 +32,7 @@ namespace ProjetoAutores.Application.Controllers
         }
 
         [HttpPost("Adicionar")]
-        public ActionResult Adicionar([FromBody] AutorViewModel autor)
+        public ActionResult Adicionar([FromBody] List<AutorViewModel> autor)
         {
             try
             {

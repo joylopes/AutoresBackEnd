@@ -43,13 +43,13 @@ namespace ProjetoAutores.Service.Services
             return await _repository.InsertAsync(autor);
         }
 
-        public AutorViewModel Adicionar(AutorViewModel autorModel)
+        public List<AutorViewModel> Adicionar(List<AutorViewModel> autorModel)
         {
-            foreach (var item in autorModel.listaDeNomes)
+            foreach (var item in autorModel)
             {
-                AutorEntity autor = new AutorEntity(item);
+                AutorEntity autor = new AutorEntity(item.Nome);
                 _repository.Insert(autor);
-                autorModel.Id = autor.Id;
+                item.Id = autor.Id;
             }
 
             return autorModel;
@@ -59,15 +59,19 @@ namespace ProjetoAutores.Service.Services
         {
             throw new System.NotImplementedException();
         }
-        public async Task<AutorViewModel> ListarAutoresComNomeFormatado()
+        public async Task<List<AutorViewModel>> ListarAutoresComNomeFormatado()
         {
-            AutorViewModel autoresModel = new AutorViewModel();
-            autoresModel.listaDeNomes = new List<string>();
+            List<AutorViewModel> autoresModel = new List<AutorViewModel>();
             var autores = await _repository.SelectAsync();
 
             foreach (var item in autores)
             {
-                autoresModel.listaDeNomes.Add(this.FormatarNome(item.Nome));
+                autoresModel.Add(new AutorViewModel
+                {
+                    Id = item.Id,
+                    Nome = this.FormatarNome(item.Nome),
+                    DataDeCadastro = item.DataDeCadastro
+                });
             }
 
             return autoresModel;

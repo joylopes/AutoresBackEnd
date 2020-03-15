@@ -137,38 +137,17 @@ namespace ServiceTeste
         }
 
         [Fact]
-        public void Autor_Adicionar_ReTornaAutorModelComId()
-        {
-            //Arrange
-            var autorService = new AutorService();
-
-            //Act
-            var resultado = autorService.Adicionar(new AutorViewModel
-            {
-                Id = 0,
-                Nome = "string",
-                DataDeCadastro = DateTime.UtcNow
-            });
-
-            //Assert
-            Assert.NotEqual(expected: 0, actual: resultado.Id);
-        }
-
-        [Fact]
         public void Autor_Adicionar_ReTornaErroNomeVazio()
         {
             //Arrange & Act & Assert
             var autorService = new AutorService();
+            var model = new List<AutorViewModel>();
+            var obj = new AutorViewModel() { Nome = null };
+            model.Add(obj);
+
             var exception = Assert.Throws<Exception>(testCode: () =>
               {
-                  autorService.Adicionar(
-                  new AutorViewModel
-                  {
-                      Id = 0,
-                      Nome = String.Empty,
-                      DataDeCadastro = DateTime.UtcNow
-                  });
-
+                  autorService.Adicionar(model);
               });
 
             Assert.Equal(expected: "Nome não pode ser vazio!", actual: exception.Message);

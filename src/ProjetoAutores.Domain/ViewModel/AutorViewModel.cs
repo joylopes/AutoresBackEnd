@@ -8,9 +8,7 @@ namespace ProjetoAutores.Domain.ViewModel
     {
         [JsonIgnore]
         public int Id { get; set; }
-        [JsonIgnore]
         public string Nome { get; set; }
-        public List<string> listaDeNomes { get; set; }
         [JsonIgnore]
         public DateTime DataDeCadastro { get; set; }
     }
