@@ -64,7 +64,7 @@ namespace ProjetoAutores.Service.Services
             List<AutorViewModel> autoresModel = new List<AutorViewModel>();
             var autores = await _repository.SelectAsync();
 
-            foreach (var item in autores)
+            foreach (var item in autores.OrderByDescending(x => x.Id))
             {
                 autoresModel.Add(new AutorViewModel
                 {
