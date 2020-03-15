@@ -18,6 +18,11 @@ namespace ProjetoAutores.Service.Services
         {
             _repository = repository;
         }
+
+        public AutorService()
+        {
+        }
+
         public Task<bool> Delete(int id)
         {
             throw new System.NotImplementedException();
@@ -69,7 +74,7 @@ namespace ProjetoAutores.Service.Services
             return autoresDTO;
         }
 
-        private string FormatarNome(string nome)
+        public string FormatarNome(string nome)
         {
             string nomeFormatado = String.Empty;
             string[] nomeArray = nome.ToLower().Split(' ');
@@ -81,11 +86,11 @@ namespace ProjetoAutores.Service.Services
 
             return nomeFormatado;
         }
-        private string FormatarNomeSemSobrenome(string nome)
+        public string FormatarNomeSemSobrenome(string nome)
         {
             return nome.ToUpper();
         }
-        private string FormatarNomeComSobrenome(string[] nomeArray)
+        public string FormatarNomeComSobrenome(string[] nomeArray)
         {
 
             if (this.validarNomeComAgnome(nomeArray))
@@ -94,7 +99,7 @@ namespace ProjetoAutores.Service.Services
                 return this.FormatarNomeSemAgnome(nomeArray);
 
         }
-        private string FormatarNomeComAgnome(string[] nomeArray)
+        public string FormatarNomeComAgnome(string[] nomeArray)
         {
             string nomeFormatado = String.Empty;
 
@@ -122,7 +127,7 @@ namespace ProjetoAutores.Service.Services
 
             return nomeFormatado;
         }
-        private string FormatarNomeSemAgnome(string[] nomeArray)
+        public string FormatarNomeSemAgnome(string[] nomeArray)
         {
             string sobrenome = nomeArray[nomeArray.Length - 1].ToUpper();
             string nomeFormatado = sobrenome + ",";
@@ -145,7 +150,7 @@ namespace ProjetoAutores.Service.Services
             return nomeFormatado;
         }
 
-        private bool validarNomeComPreposicao(string nome)
+        public bool validarNomeComPreposicao(string nome)
         {
             List<string> listaDePreposicoes = new List<string>() { "da", "de", "do", "das", "dos" };
 
@@ -155,7 +160,7 @@ namespace ProjetoAutores.Service.Services
             return false;
         }
 
-        private bool validarNomeComAgnome(string[] nomeArray)
+        public bool validarNomeComAgnome(string[] nomeArray)
         {
             List<string> listaDeAgnomes = new List<string>() { "FILHO", "FILHA", "NETO", "NETA", "SOBRINHO", "SOBRINHA", "JUNIOR" };
 
