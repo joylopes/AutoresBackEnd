@@ -8,6 +8,7 @@
 - Swashbuckle 4.0.1
 - AutoMapper 7.0.1
 - EntityFrameworkCore SqlServer 2.2.0
+- xUnit 2.4.1
 
 
 ![](../header.png)
@@ -21,6 +22,7 @@ O comando abaixo é necessário para que seja instalado todos os packages utiliz
 dotnet add package Swashbuckle.AspNetCore --version 4.0.1
 dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection --version 7.0.0
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 2.2.0
+dotnet add package xunit --version 2.4.1
 ```
 
 ## Meta
