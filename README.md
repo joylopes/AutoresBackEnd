@@ -4,9 +4,11 @@
 .NET Core [2.2]
 
 ### Package
-Swashbuckle 4.0.1
-AutoMapper 7.0.1
-EntityFrameworkCore SqlServer 2.2.0
+
+- Swashbuckle 4.0.1
+- AutoMapper 7.0.1
+- EntityFrameworkCore SqlServer 2.2.0
+
 
 ![](../header.png)
 
