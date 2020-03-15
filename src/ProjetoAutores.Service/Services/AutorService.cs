@@ -59,22 +59,18 @@ namespace ProjetoAutores.Service.Services
         {
             throw new System.NotImplementedException();
         }
-        public async Task<IEnumerable<AutorViewModel>> ListarAutoresComNomeFormatado()
+        public async Task<AutorViewModel> ListarAutoresComNomeFormatado()
         {
-            List<AutorViewModel> autoresDTO = new List<AutorViewModel>();
+            AutorViewModel autoresModel = new AutorViewModel();
+            autoresModel.listaDeNomes = new List<string>();
             var autores = await _repository.SelectAsync();
 
             foreach (var item in autores)
             {
-                autoresDTO.Add(new AutorViewModel
-                {
-                    Id = item.Id,
-                    Nome = this.FormatarNome(item.Nome),
-                    DataDeCadastro = item.DataDeCadastro
-                });
+                autoresModel.listaDeNomes.Add(this.FormatarNome(item.Nome));
             }
 
-            return autoresDTO;
+            return autoresModel;
         }
 
         public string FormatarNome(string nome)

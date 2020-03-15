@@ -9,7 +9,7 @@ namespace ProjetoAutores.Domain.Interfaces.Services.Autor
     {
         Task<AutorEntity> Get(int id);
         Task<IEnumerable<AutorEntity>> GetAll();
-        Task<IEnumerable<AutorViewModel>> ListarAutoresComNomeFormatado();
+        Task<AutorViewModel> ListarAutoresComNomeFormatado();
         Task<AutorEntity> Post(AutorEntity autor);
         AutorViewModel Adicionar(AutorViewModel autor);
         Task<AutorEntity> Put(AutorEntity autor);
