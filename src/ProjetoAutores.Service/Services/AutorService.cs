@@ -45,9 +45,12 @@ namespace ProjetoAutores.Service.Services
 
         public AutorViewModel Adicionar(AutorViewModel autorModel)
         {
-            AutorEntity autor = new AutorEntity(autorModel.Nome);
-            _repository.Insert(autor);
-            autorModel.Id = autor.Id;
+            foreach (var item in autorModel.listaDeAutores)
+            {
+                AutorEntity autor = new AutorEntity(item);
+                _repository.Insert(autor);
+                autorModel.Id = autor.Id;
+            }
 
             return autorModel;
         }
